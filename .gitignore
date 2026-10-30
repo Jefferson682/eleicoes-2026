@@ -1,9 +1,8 @@
 # dados oficiais do TSE (baixados por scripts/00_baixar_e_verificar.py)
 zips/
 extraidos/
-# dados intermediários e saídas (gerados pelos scripts)
+# dados intermediários (gerados por scripts/01_extrair.py)
 dados/
-resultados/
 # ambiente Python
 .venv/
 __pycache__/

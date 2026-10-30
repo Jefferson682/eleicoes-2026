@@ -1,0 +1,28 @@
+,1,2
+secoes,499206,499205
+empates,2148,2155
+empates_pct,0.43,0.43
+empates_esperado,2196,2341
+empates_0x0,0,0
+empates_mais_comuns,"{118: 49, 116: 46, 119: 44}","{131: 42, 120: 41, 133: 41}"
+placares_distintos,41885,50408
+media_secoes_por_placar,11.9,9.9
+mediana_entre_repetidos,10.0,9.0
+placar_mais_repetido,96x128,121x148
+maior_repeticao,80,67
+maior_repeticao_esperada,80 – 88,65 – 76
+compartilham_placar_pais,491981,490019
+compartilham_esperado,"493,399 – 493,492","491,822 – 491,974"
+repetidas_uf,371436,350288
+repetidas_uf_pct,74.4,70.2
+repetidas_uf_esperado_pct,78.1,74.5
+mesma_zona,25009,21103
+mesma_zona_esperado,"39,979 – 40,798","34,710 – 35,180"
+votaveis,15,4
+secoes_50mais,498607,498585
+vetor_identico,62,117661
+vetor_maior_grupo,2,7
+vetor_esperado,40 – 74,"130,586 – 132,261"
+vetor_maior_grupo_esperado,2 – 2,7 – 8
+vetor_mesma_zona,0,424
+vetor_mesma_zona_esperado,0 – 2,766 – 849
