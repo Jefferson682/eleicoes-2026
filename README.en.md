@@ -5,7 +5,7 @@
 An **independent and impartial** analysis of the ballot box reports (*boletins de urna*, BU) from Brazil's 2026 presidential election (1st and 2nd round). It uses **only the raw data published by the TSE** (Brazil's Superior Electoral Court) on its [open data portal](https://dadosabertos.tse.jus.br/dataset/resultados-2026-boletim-de-urna).
 
 - 📄 **Full report (PDF, Portuguese):** [Google Drive](https://drive.google.com/file/d/1lvo6YSrL5hZp1svr5e6W5HquW7BvZeIv/view?usp=sharing)
-- 🧮 **This repository:** only the analysis code. The data is downloaded straight from the TSE by the first script.
+- 🧮 **This repository:** the analysis code and the reference results ([`resultados/`](resultados/)). The data is downloaded straight from the TSE by the first script.
 
 > **Statement of independence.** This work was done on the author's own initiative, **with no compensation of any kind** and **with no intention of validating or invalidating the electoral process**. No external data, news or opinion is used in any calculation. The only external information, cited as context (endorsements declared before the 2nd round), is flagged in section 6.3 of the report and in `05_variacao_turnos.py`.
 
@@ -38,7 +38,17 @@ python scripts/05_variacao_turnos.py      # vote gains from the 1st to the 2nd r
 python scripts/06_metadados.py            # file size, integrity and dates
 ```
 
-Each analysis script prints its tables to the terminal and saves the same numbers to `resultados/*.csv`. The data (`zips/`, `extraidos/`, `dados/`) and the outputs (`resultados/`) live inside the repository folder and are ignored by git. To use another folder, set the `ELEICOES_RAIZ` environment variable. Scripts 02 to 06 take from seconds to a few minutes; 06 takes about 4 minutes because it re-reads every CSV and queries the TSE server.
+Each analysis script prints its tables to the terminal and saves the same numbers to `resultados/*.csv`. The data (`zips/`, `extraidos/`, `dados/`) lives inside the repository folder and is ignored by git. To use another folder, set the `ELEICOES_RAIZ` environment variable. Scripts 02 to 06 take from seconds to a few minutes; 06 takes about 4 minutes because it re-reads every CSV and queries the TSE server.
+
+## Reference results
+
+The [`resultados/`](resultados/) folder holds the CSVs produced by the run used in the report. They work as an answer key: after running the scripts, compare your output with the version in the repository.
+
+```bash
+git diff --stat -- resultados/   # no differences = same numbers as the report
+```
+
+The simulations in script 04 use a fixed seed, so the numbers should come out identical. Each file starts with the number of the script that produces it (`02_*.csv` comes from `02_horarios.py`, and so on).
 
 ## What each script does
 
@@ -96,7 +106,7 @@ Compares what was observed with **what chance alone would produce**. It simulate
 ## License
 
 - **Code:** [MIT](LICENSE).
-- **Report (PDF):** [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+- **Results and report (PDF):** [CC BY 4.0](LICENSE-CONTENT.md).
 
 Free to use, **including commercially**, as long as the author is credited:
 

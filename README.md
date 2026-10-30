@@ -5,7 +5,7 @@
 Análise **independente e imparcial** dos boletins de urna (BU) da eleição presidencial de 2026 (1º e 2º turno), feita **exclusivamente com os dados brutos publicados pelo TSE** no [portal de dados abertos](https://dadosabertos.tse.jus.br/dataset/resultados-2026-boletim-de-urna).
 
 - 📄 **Relatório completo (PDF):** [Google Drive](https://drive.google.com/file/d/1lvo6YSrL5hZp1svr5e6W5HquW7BvZeIv/view?usp=sharing)
-- 🧮 **Este repositório:** só o código da análise. Os dados são baixados direto do TSE pelo primeiro script.
+- 🧮 **Este repositório:** o código da análise e os resultados de referência ([`resultados/`](resultados/)). Os dados são baixados direto do TSE pelo primeiro script.
 
 > **Declaração de independência.** Trabalho feito por iniciativa própria do autor, **sem contrapartida de qualquer natureza** e **sem a intenção de validar ou invalidar o processo eleitoral**. Nenhum dado, notícia ou opinião externa é usado nos cálculos. A única informação externa, citada apenas como contexto (apoios declarados no 2º turno), está sinalizada na seção 6.3 do relatório e no script `05_variacao_turnos.py`.
 
@@ -38,7 +38,17 @@ python scripts/05_variacao_turnos.py      # ganho de votos do 1º para o 2º tur
 python scripts/06_metadados.py            # volume, integridade e datas dos arquivos
 ```
 
-Cada script de análise imprime as tabelas no terminal e salva os mesmos números em `resultados/*.csv`. Os dados (`zips/`, `extraidos/`, `dados/`) e as saídas (`resultados/`) ficam dentro da pasta do repositório e são ignorados pelo git. Para usar outra pasta, defina a variável de ambiente `ELEICOES_RAIZ`. Os scripts 02 a 06 levam de segundos a poucos minutos; o 06 leva cerca de 4 minutos porque relê todos os CSVs e consulta o servidor do TSE.
+Cada script de análise imprime as tabelas no terminal e salva os mesmos números em `resultados/*.csv`. Os dados (`zips/`, `extraidos/`, `dados/`) ficam dentro da pasta do repositório e são ignorados pelo git. Para usar outra pasta, defina a variável de ambiente `ELEICOES_RAIZ`. Os scripts 02 a 06 levam de segundos a poucos minutos; o 06 leva cerca de 4 minutos porque relê todos os CSVs e consulta o servidor do TSE.
+
+## Resultados de referência
+
+A pasta [`resultados/`](resultados/) traz os CSVs gerados pela execução usada no relatório. Eles servem de gabarito: depois de rodar os scripts, compare a sua saída com a versão do repositório.
+
+```bash
+git diff --stat -- resultados/   # nenhuma diferença = mesmos números do relatório
+```
+
+As simulações do script 04 usam semente fixa, então os números devem sair idênticos. Os arquivos começam com o número do script que os gera (`02_*.csv` vem de `02_horarios.py`, e assim por diante).
 
 ## O que cada script faz
 
@@ -96,7 +106,7 @@ Compara o observado com o **esperado por acaso**. Para isso simula novas eleiç�
 ## Licença
 
 - **Código:** [MIT](LICENSE).
-- **Relatório (PDF):** [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.pt-br).
+- **Resultados e relatório (PDF):** [CC BY 4.0](LICENSE-CONTENT.md).
 
 O uso é livre, **inclusive comercial**, desde que o autor seja citado:
 
